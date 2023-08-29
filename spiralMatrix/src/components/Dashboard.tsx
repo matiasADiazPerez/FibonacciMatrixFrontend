@@ -1,55 +1,54 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-  const Matrix = () => {
-      const [res, setRes] = useState();
-      const getMatrix = async () => {
-      
-      try {
-        const raw = await fetch("http://localhost:8080/spiral?cols=3&rows=3", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application-json",
-              "Authorization": "Bearer " + localStorage.getItem("access")
-            }
-        });
-        const res = await raw.json();
-        return res;
-      } catch (err) {
-        console.log(err);
-      }
-      }
-      useEffect(()=>{
-          getMatrix().then(r => setRes(r))
-      },[])
-      if (!res) {
-        return <h2>Loading...</h2>
-      }
-      console.log(res);
-         const items = [];
-        for (const row of res.Payload) {
-            const item = [];
-            for (const val of row) {
-                item.push(<td>{val}</td>)
-            }
-            items.push(<tr>{item}</tr>)
-        }
-        return(
-          <table className="table table-bordered">
-              <tbody> 
-                  {items}
-              </tbody>
-       </table>
-        );
-  }
+import MatrixTable from './MatrixTable'
 export default function Dashboard() {
-  const token = localStorage.getItem("access");
+  const [cols, setCols] = useState(0);
+  const [rows, setRows] = useState(0);
+  const [matrixValues, setMatrixValues] = useState([]);
+  const token = localStorage.getItem('access');
   if (!token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to='/login' replace />;
   }
-  
-  return(
+    const setMatrix = (e) => {
+        e.preventDefault();
+        setMatrixValues([cols,rows]);
+    }
+
+  return (
       <div>
-          <Matrix/>
+          <div>
+
+    <form onSubmit={setMatrix}>
+      <div className='form-group'>
+        <label htmlFor='colsInput'>cols</label>
+        <input
+          type='number'
+          className='form-control'
+          id='colsInput'
+          value={cols}
+          autoComplete='off'
+          onChange={(e) => setCols(e.target.value)}
+        />
       </div>
+      <div className='form-group'>
+        <label htmlFor='rowsInput'>rows</label>
+        <input
+          type='number'
+          className='form-control'
+          id='rowsInput'
+          value={rows}
+          placeholder='Password'
+          onChange={(e) => setRows(e.target.value)}
+        />
+      </div>
+      <button type='submit' className='btn btn-primary'>
+        Submit
+      </button>
+    </form>
+      </div>
+      <div>
+          <MatrixTable matrixValues={matrixValues} />
+      </div>
+    </div>
   );
 }

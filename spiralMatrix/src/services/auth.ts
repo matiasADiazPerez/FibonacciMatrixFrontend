@@ -1,12 +1,9 @@
-const login = (e) => {
-}
+const login = (e) => {};
 
-const  logout = () => {
-    setisAutheticated(false);
-    console.log("loggedInUser:" + isAutheticated)
-}
+const logout = () => {
+  setisAutheticated(false);
+  console.log('loggedInUser:' + isAutheticated);
+};
 
-
-export default login 
-export default logout
-
+export default login;
+export default logout;
