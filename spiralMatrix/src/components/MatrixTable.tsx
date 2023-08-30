@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 const getMatrix = async (matrixValues) => {
-    try {
+  try {
     console.log(matrixValues.length);
     if (matrixValues.length !== 2) {
-        return {};
+      return {};
     }
     const cols = matrixValues[0];
-    const rows = matrixValues[1]
+    const rows = matrixValues[1];
     const raw = await fetch(`http://localhost:8080/spiral?cols=${cols}&rows=${rows}`, {
       method: 'GET',
       headers: {
