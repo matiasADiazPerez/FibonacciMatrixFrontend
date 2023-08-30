@@ -27,6 +27,7 @@ function App() {
             />
             <Route path='/logout' element={<Logout />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='*' element={<h3> Not found.. </h3>} />
           </Routes>
         </BrowserRouter>
       </div>
