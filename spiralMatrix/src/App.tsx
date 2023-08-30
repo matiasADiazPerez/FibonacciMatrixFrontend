@@ -4,19 +4,21 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Navbar from './components/Navbar';
+import Welcome from './components/Welcome';
 import './App.css';
 
 export const Ctx = createContext();
 function App() {
   const [user, setUser] = useState('');
   return (
-    <div className='row justify-content-center'>
+    <div className='row'>
       <div className='col'>
         <Navbar user={user} />
       </div>
-      <div className='row justify-content-md-center'>
+    <div className='row bg-img d-flex min-vh-100'>
         <BrowserRouter>
-          <Routes>
+            <Routes>
+                <Route path='/' element={<Welcome/>}/>
             <Route
               path='/login'
               element={

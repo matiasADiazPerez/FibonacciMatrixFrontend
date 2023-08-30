@@ -36,7 +36,7 @@ export default function Login() {
     }
   };
   return (
-    <div className='col-3 '>
+    <div className='container col-3 align-center'>
       <h2>Login</h2>
       <div>{err ? <>Something went wrong, try again</> : <></>}</div>
       <form onSubmit={login} className='align-center'>
@@ -63,10 +63,11 @@ export default function Login() {
             placeholder='Password'
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <button type='submit' className='btn btn-primary '>
+      </div>
+      <br/>
+        <button type='submit' className='Submit'>
           Submit
-        </button>
+      </button>
       </form>
     </div>
   );

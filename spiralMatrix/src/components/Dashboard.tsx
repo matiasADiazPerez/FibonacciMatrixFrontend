@@ -15,8 +15,8 @@ export default function Dashboard() {
   };
 
   return (
-    <div className='container align-center'>
-      <div className='d-flex justify-content-center'>
+    <div className='row'>
+      <div className='bg-white col-2 mx-2'>
         <form onSubmit={setMatrix}>
           <div className='form-group sm-6'>
             <label htmlFor='colsInput'>cols</label>
@@ -39,13 +39,15 @@ export default function Dashboard() {
               placeholder='Password'
               onChange={(e) => setRows(e.target.value)}
             />
-          </div>
-          <button type='submit' className='btn btn-primary'>
+        </div>
+        <br/>
+          <button type='submit' className='Submit'>
             Submit
           </button>
         </form>
-      </div>
-      <div className='row'>
+    </div>
+    <br/>
+      <div className='col-6'>
         <MatrixTable matrixValues={matrixValues} />
       </div>
     </div>

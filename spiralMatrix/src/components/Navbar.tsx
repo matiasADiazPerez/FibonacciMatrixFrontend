@@ -1,5 +1,18 @@
+import React, {useEffect, useState} from 'react';
+
 export default function Navbar(props) {
-  console.log(props);
+    const [user, setUser] = useState(props.user.name);
+    console.log(props);
+    useEffect(()=> {
+        if (!props.user.name) {
+            setUser(localStorage.getItem('user'));
+            
+        } else {
+            setUser(props.user.name)
+        }
+
+    
+    },[props]);
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <a className='navbar-brand' href='/'>
@@ -9,7 +22,7 @@ export default function Navbar(props) {
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item active'>
             <a className='nav-link' href='/dashboard'>
-              Dashboard <span className='sr-only'>(current)</span>
+              Dashboard 
             </a>
           </li>
           <li className='nav-item'>
@@ -19,7 +32,7 @@ export default function Navbar(props) {
           </li>
         </ul>
       </div>
-      <span className='col-4'>{props.user ? `Welcome ${props.user.name}` : ''}</span>
+      <span className='col-4'>{user ? `Welcome ${user}` : ''}</span>
     </nav>
   );
 }
