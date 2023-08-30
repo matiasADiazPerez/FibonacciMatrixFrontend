@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# Matrix Spiral Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend implementation of the Fibonacci Spiral Matrix challenge. The app aims to achieve the following:
 
-Currently, two official plugins are available:
+- **User Authentication:** The application requires user authentication via a login process. Users must be created beforehand through the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Matrix Dimension Input:** Upon successful authentication, users are prompted with a form to input the number of columns (cols) and rows for their desired Fibonacci Spiral Matrix. Validation ensures that the entered values are within acceptable limits.
 
-## Expanding the ESLint configuration
+- **Display Fibonacci Spiral Matrix:** The application displays a matrix populated with Fibonacci numbers arranged in a spiral pattern based on the provided dimensions (cols and rows). The spiral starts from the top-left corner and continues in a clockwise direction.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Backend Dependency:** This frontend application relies on a backend server running at `localhost:8080`. The backend handles user authentication, allowing the frontend to create user accounts for usage.
 
-- Configure the top-level `parserOptions` property like this:
+- **Matrix Dimension Limits:** To prevent excessive resource usage, both the number of columns and rows are capped at a maximum of 500.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Deployment
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Follow these commands for deployment:
+
+- `npm run dev`: Initiates the app and deploys it to `http://localhost:5173`.
+- `npm run lint`: Executes ESLint to identify and display warnings and errors within the code. Utilize `npm run lint:fix` to automatically address some of these issues.
+- `npm run format`: Utilizes a code formatter (Prettier) to ensure that the code conforms to a consistent coding style.
+
+Please ensure that the backend is running at `localhost:8080` before using this application.
+
+
+**Note:** This document provides an overview of the application's purpose and functionality. For detailed implementation information, refer to the codebase itself.
+
+
